@@ -1,0 +1,72 @@
+<div class="form-zone flex flex-column align-items-start">
+  <div class="list-question flex flex-column">
+    <div class="p-4">
+      <div class="question mt-3" *ngFor="let question of listQuestions">
+        <div class="flex align-items-center">
+          <span class="text-bold mb-2 mr-2">
+            {{ question.name }}
+          </span>
+          <span *ngIf="question.isRequired" class="mb-2 mr-2"> * </span>
+        </div>
+
+        <textarea
+          *ngIf="question.type === TypeQuestion.PARAGRAPH; else zoneCheckbox"
+          class="w-100 mt-1 text-area-custom"
+          [(ngModel)]="question.pickedAnswer"
+          [rows]="10"
+        ></textarea>
+        <ng-template #zoneCheckbox>
+          <ng-container class="flex flex-column align-items-start">
+            <div
+              class="mb-1"
+              *ngFor="let answer of question.answers; let i = index"
+            >
+              <div class="flex align-items-center">
+                <p-checkbox
+                  label=" {{ answer }}"
+                  [value]="answer + '/' + question.id"
+                  [name]="answer"
+                  [id]="question.id"
+                  [(ngModel)]="selectedValue"
+                  (onChange)="addPickedAnswer(question.id)"
+                >
+                  {{ selectedValue }}
+                </p-checkbox>
+                <input
+                  *ngIf="answer === 'Other'"
+                  class="w-100 ml-4"
+                  type="text"
+                  autofocus
+                  pInputText
+                  (blur)="addPickedAnswer(question.id, $event)"
+                  placeholder="Type answer here"
+                />
+              </div>
+            </div>
+          </ng-container>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="zone-options flex justify-content-between align-items-center mt-3"
+  >
+    <span class="cursor-pointer" (click)="showDialog = true"
+      >Add new question</span
+    >
+
+    <button
+      pButton
+      type="button"
+      label="Review my answer"
+      (click)="reviewAnswers()"
+      class="p-button-outlined p-button-secondary mt-3"
+    ></button>
+  </div>
+</div>
+
+<app-add-question
+  *ngIf="showDialog"
+  [(showDialog)]="showDialog"
+></app-add-question>

@@ -1,0 +1,82 @@
+<p-dialog
+  [(visible)]="showDialog"
+  [draggable]="false"
+  [resizable]="false"
+  [modal]="true"
+  [header]="'Add new question'"
+  (onHide)="this.showDialogChange.emit(false)"
+>
+  <div class="zone-question">
+    <div class="mb-2">
+      <p-dropdown
+        [placeholder]="questionType"
+        [options]="listQuestionType"
+        (onChange)="selectType($event)"
+      >
+      </p-dropdown>
+    </div>
+    <div class="mt-2">
+      <input
+        class="w-100"
+        type="text"
+        pInputText
+        autofocus
+        [(ngModel)]="questionName"
+        placeholder="Type question here"
+      />
+    </div>
+    <ng-container
+      *ngIf="questionType == listQuestionType[0] && listNumberAnswers > 0"
+    >
+      <div class="list-checkbox">
+        <div
+          class="checkbox-question"
+          *ngFor="
+            let numberAnswer of [].constructor(listNumberAnswers);
+            let i = index
+          "
+        >
+          <input
+            class="w-100 mb-2"
+            type="text"
+            autofocus
+            pInputText
+            [(ngModel)]="answerList[i]"
+            placeholder="Type answer here"
+          />
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="zone-optional">
+    <span class="text-blue cursor-pointer" (click)="addMoreAnswers()">
+      + Add another answer
+    </span>
+    <div class="option-checkbox text-blue">
+      <p-checkbox
+        class="cursor-pointer"
+        [binary]="true"
+        [(ngModel)]="isSpecify"
+        label="Allow user to specify their own answer"
+      >
+      </p-checkbox>
+      <p-checkbox
+        class="fs-14 mt-3 cursor-pointer"
+        [binary]="true"
+        [(ngModel)]="isRequired"
+        label="This field is required"
+      >
+      </p-checkbox>
+    </div>
+  </div>
+  <div class="submit-question">
+    <button
+      [disabled]="checkValidator()"
+      pButton
+      type="button"
+      label="Submit"
+      (click)="submit()"
+      class="p-button-outlined p-button-secondary mt-3"
+    ></button>
+  </div>
+</p-dialog>

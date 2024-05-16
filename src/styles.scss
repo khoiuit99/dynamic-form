@@ -1,1 +1,105 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  * {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  .p-dialog {
+    width: 450px;
+    height: 650px;
+  }
+
+  .p-dialog .p-dialog-content {
+    background-color: transparent !important;
+    border-bottom-right-radius: 23px !important;
+    border-bottom-left-radius: 23px !important;
+  }
+
+  .p-dialog .p-dialog-header {
+    background-color: transparent !important;
+    border-top-right-radius: 23px !important;
+    border-top-left-radius: 23px !important;
+  }
+
+  .p-dialog {
+    border-radius: 23px !important;
+    background: linear-gradient(#dcdce2 0%, #c6c7d7 100%);
+    z-index: 10000000;
+  }
+
+  .p-dropdown {
+    width: 100%;
+    background: linear-gradient(#dcdce2 0%, #c6c7d7 100%) !important;
+    border: 1px solid black !important;
+  }
+
+  input {
+    width: 100% !important;
+  }
+
+  .text-blue {
+    color: blue;
+    font-size: 14px;
+  }
+
+  .text-bold {
+    font-weight: bold;
+  }
+
+  p-button-outlined p-button-secondary {
+    border: 1px solid transparent !important;
+    border-radius: 10px !important;
+    color: white;
+    background-color: #448AFF !important;
+    font-size: 14px;
+    height: 30px !important;
+  }
+
+  .text-area-custom {
+    border: 1px solid black !important;
+    border-radius: 3px;
+    resize: none;
+    color: black;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: normal;
+
+    height: 100px;
+    width: 100%;
+
+    padding: 10px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #fff;
+      opacity: 0.33;
+      /* Firefox */
+    }
+  }
+
+  // [name="p-checkbox"] {
+  //   input {
+  //     display: none;
+  //   }
+  // }
+
+
+  // [name="p-checkbox"]:checked {
+  //   input {
+  //     display: block;
+  //   }
+  // }
+}

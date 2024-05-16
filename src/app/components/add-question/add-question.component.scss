@@ -1,0 +1,26 @@
+:host {
+  .zone-question {
+    height: 400px;
+    width: 100%;
+    overflow-y: scroll;
+
+    .list-checkbox {
+      margin-top: 1.55rem;
+    }
+  }
+
+  .zone-optional {
+
+    .option-checkbox {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+
+  div.submit-question {
+    display: inline-block;
+    float: right;
+  }
+}

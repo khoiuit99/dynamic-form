@@ -1,0 +1,26 @@
+:host {
+  .form-zone {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+
+    .list-question {
+      height: 500px;
+      width: 450px;
+      background: aliceblue;
+      overflow: scroll;
+      border-radius: 10px;
+
+      .question {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        width: 100%;
+      }
+    }
+
+    .zone-options {
+      width: 100%;
+    }
+  }
+}
